@@ -1,0 +1,92 @@
+---
+general:
+  git:
+    remote: git@github.com:RobotnikAutomation/test_packages.git
+  description: "Automated creation package"
+  company: "Robotnik Automation S.L."
+  authors:
+    - name: Guillem Gari
+      email: ggari@robotnik.es
+  maintainers:
+    - name: Guillem Gari
+      email: ggari@robotnik.es
+    - name: Christian Chavez
+      email: chavez@robotnik.es
+    - name: Sandra Moreno
+      email: smoreno@robotnik.es
+
+packages:
+  - name: testing_python_package
+    type: python
+    description: >-
+      Dummy package to test
+      automated creation of
+      a ROS2 Python package
+    executables:
+      - name: test1_python
+        source: test1.main
+      - name: test2_python
+        source: test2.main
+    templates:
+      code:
+        - test1.py
+        - test2.py
+      config:
+        - test1.yaml
+        - test2.yaml
+      launch:
+        - test1.launch.xml
+        - test2.launch.py
+      dependencies:
+        build:
+          - std_msgs
+        test:
+          - pylint
+        exec:
+          - std_msgs
+
+  - name: testing_interfaces_package
+    type: interfaces
+    description: >-
+      Dummy package to test
+      automated creation of
+      a ROS2 interfaces Package (msgs, srv, actions)
+    templates:
+      msg:
+        - MsgTest1.msg
+        - MsgTest2.msg
+      srv:
+        - SrvTest1.srv
+        - SrvTest2.srv
+      action:
+        - ActionTest1.action
+        - ActionTest2.action
+      dependencies:
+        build:
+          - std_msgs
+        exec:
+          - std_msgs
+
+  - name: testing_cpp_package
+    type: cpp
+    description: >-
+      Dummy package to test
+      automated creation of
+      a ROS2 C++ package
+    templates:
+      code:
+        - test1.cpp
+        - test1.hpp
+        - test2.cpp
+        - test2.hpp
+      config:
+        - test1.yaml
+        - test2.yaml
+      launch:
+        - test1.launch.xml
+        - test2.launch.py
+      dependencies:
+        build:
+          - std_msgs
+        exec:
+          - std_msgs

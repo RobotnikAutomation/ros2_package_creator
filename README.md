@@ -1,1 +1,1 @@
-# ros2_package_generator
+# ros2 package creator
